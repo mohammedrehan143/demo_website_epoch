@@ -7,13 +7,15 @@ function GallerySection() {
       id="gallery"
       className="relative mt-32 overflow-hidden px-4 py-24 md:px-10"
     >
-      {/* Ambient Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#12081f] to-transparent" />
+      {/* More Visible Bluish Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#dceeff] via-[#edf6ff] to-[#fff3f8]" />
 
-      {/* Optimized Glow Effects */}
-      <div className="absolute left-[-120px] top-40 h-[420px] w-[420px] rounded-full bg-fuchsia-500/10 blur-[90px]" />
+      {/* Glow Effects */}
+      <div className="absolute left-[-120px] top-40 h-[420px] w-[420px] rounded-full bg-pink-200/35 blur-[170px]" />
 
-      <div className="absolute right-[-100px] top-[40%] h-[380px] w-[380px] rounded-full bg-violet-500/10 blur-[90px]" />
+      <div className="absolute right-[-100px] top-[40%] h-[420px] w-[420px] rounded-full bg-sky-300/50 blur-[180px]" />
+
+      <div className="absolute bottom-0 left-[35%] h-[320px] w-[320px] rounded-full bg-blue-200/40 blur-[150px]" />
 
       {/* Heading */}
       <div className="relative z-10 mx-auto max-w-5xl text-center">
@@ -22,7 +24,7 @@ function GallerySection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="font-clean text-xs tracking-[0.35em] text-tech-muted"
+          className="font-clean text-xs tracking-[0.35em] text-pink-400"
         >
           GALLERY
         </motion.p>
@@ -32,9 +34,9 @@ function GallerySection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="mt-4 font-display text-5xl font-semibold leading-tight md:text-7xl"
+          className="mt-4 font-display text-5xl font-semibold leading-tight text-[#1d2d44] md:text-7xl"
         >
-          Immersive <span className="text-tech-pink">Event</span> Experiences
+          Immersive <span className="text-sky-400">Event</span> Experiences
         </motion.h2>
 
         <motion.p
@@ -42,7 +44,7 @@ function GallerySection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2, duration: 0.8 }}
-          className="mx-auto mt-6 max-w-2xl font-clean text-sm leading-7 text-tech-muted md:text-base"
+          className="mx-auto mt-6 max-w-2xl font-clean text-sm leading-7 text-[#526172] md:text-base"
         >
           Every event tells a story — innovation, collaboration, creativity,
           and unforgettable moments built together by our community.
@@ -66,18 +68,15 @@ function GallerySection() {
               transition={{ duration: 0.6 }}
               className="relative"
             >
-              {/* Small Label */}
-              <p className="font-clean text-xs tracking-[0.3em] text-tech-pink">
+              <p className="font-clean text-xs tracking-[0.3em] text-sky-400">
                 EVENT EXPERIENCE
               </p>
 
-              {/* Title */}
-              <h3 className="mt-5 font-display text-4xl font-semibold leading-tight text-white md:text-6xl">
+              <h3 className="mt-5 font-display text-4xl font-semibold leading-tight text-[#1d2d44] md:text-6xl">
                 {event?.title || 'Untitled Event'}
               </h3>
 
-              {/* Description */}
-              <p className="mt-8 max-w-xl font-clean text-sm leading-7 text-white/70 md:text-base">
+              <p className="mt-8 max-w-xl font-clean text-sm leading-7 text-[#526172] md:text-base">
                 {event?.description || 'No description available'}
               </p>
 
@@ -86,20 +85,19 @@ function GallerySection() {
                 {(event?.images || []).map((img, i) => (
                   <motion.div
                     key={i}
-                    initial={{
-                      opacity: 0,
-                      y: 15,
-                    }}
-                    whileInView={{
-                      opacity: 1,
-                      y: 0,
-                    }}
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{
                       duration: 0.4,
                       delay: i * 0.08,
                     }}
-                    className={`absolute overflow-hidden rounded-[28px] border border-white/10 shadow-2xl transition-all duration-500 ease-out ${
+                    className={`absolute overflow-hidden rounded-[28px]
+                    border border-white/50
+                    bg-white/35
+                    backdrop-blur-2xl
+                    shadow-[0_10px_40px_rgba(96,165,250,0.18)]
+                    transition-all duration-500 ease-out ${
                       i === 0
                         ? `
                           left-0 top-6 z-10 
@@ -128,7 +126,6 @@ function GallerySection() {
                         `
                     }`}
                   >
-                    {/* Image */}
                     <div className="relative h-full w-full overflow-hidden">
                       <img
                         src={img}
@@ -138,8 +135,7 @@ function GallerySection() {
                         className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                       />
 
-                      {/* Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-blue-100/30 via-transparent to-pink-100/15" />
                     </div>
                   </motion.div>
                 ))}
@@ -152,16 +148,14 @@ function GallerySection() {
               whileInView={{ opacity: 1, x: 0, scale: 1 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6 }}
-              whileHover={{
-                y: -5,
-              }}
+              whileHover={{ y: -5 }}
               className="group relative"
             >
               {/* Glow */}
-              <div className="absolute inset-0 rounded-[40px] bg-tech-pink/10 blur-2xl transition duration-500 group-hover:scale-105" />
+              <div className="absolute inset-0 rounded-[40px] bg-gradient-to-r from-sky-200/40 to-pink-200/25 blur-3xl transition duration-500 group-hover:scale-105" />
 
               {/* Main Image */}
-              <div className="relative overflow-hidden rounded-[40px] border border-white/10 bg-white/5 shadow-2xl backdrop-blur-md">
+              <div className="relative overflow-hidden rounded-[40px] border border-white/50 bg-white/35 shadow-2xl backdrop-blur-2xl">
                 <img
                   src={
                     event?.featured ||
@@ -173,16 +167,14 @@ function GallerySection() {
                   className="h-[500px] w-full object-cover transition duration-500 group-hover:scale-105"
                 />
 
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
 
-                {/* Bottom Text */}
                 <div className="absolute bottom-0 left-0 p-8">
                   <p className="font-display text-3xl font-semibold text-white">
                     {event?.title || 'Untitled Event'}
                   </p>
 
-                  <p className="mt-2 font-clean text-sm text-white/70">
+                  <p className="mt-2 font-clean text-sm text-white/90">
                     EPOCH Tech Club Experience
                   </p>
                 </div>
@@ -194,7 +186,7 @@ function GallerySection() {
               {(event?.images || []).map((img, i) => (
                 <div
                   key={i}
-                  className="min-w-[220px] overflow-hidden rounded-2xl border border-white/10"
+                  className="min-w-[220px] overflow-hidden rounded-2xl border border-white/50 bg-white/35 backdrop-blur-2xl"
                 >
                   <img
                     src={img}
