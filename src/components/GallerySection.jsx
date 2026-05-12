@@ -10,9 +10,10 @@ function GallerySection() {
       {/* Ambient Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#12081f] to-transparent" />
 
-      <div className="absolute left-[-120px] top-40 h-[420px] w-[420px] rounded-full bg-fuchsia-500/10 blur-[140px]" />
+      {/* Optimized Glow Effects */}
+      <div className="absolute left-[-120px] top-40 h-[420px] w-[420px] rounded-full bg-fuchsia-500/10 blur-[90px]" />
 
-      <div className="absolute right-[-100px] top-[40%] h-[380px] w-[380px] rounded-full bg-violet-500/10 blur-[140px]" />
+      <div className="absolute right-[-100px] top-[40%] h-[380px] w-[380px] rounded-full bg-violet-500/10 blur-[90px]" />
 
       {/* Heading */}
       <div className="relative z-10 mx-auto max-w-5xl text-center">
@@ -59,10 +60,10 @@ function GallerySection() {
           >
             {/* LEFT CONTENT */}
             <motion.div
-              initial={{ opacity: 0, x: -60 }}
+              initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.6 }}
               className="relative"
             >
               {/* Small Label */}
@@ -80,14 +81,14 @@ function GallerySection() {
                 {event?.description || 'No description available'}
               </p>
 
-              {/* Playing Cards Floating Images */}
+              {/* Floating Images */}
               <div className="group relative mt-16 hidden h-[320px] w-full md:block">
                 {(event?.images || []).map((img, i) => (
                   <motion.div
                     key={i}
                     initial={{
                       opacity: 0,
-                      y: 30,
+                      y: 15,
                     }}
                     whileInView={{
                       opacity: 1,
@@ -95,35 +96,35 @@ function GallerySection() {
                     }}
                     viewport={{ once: true }}
                     transition={{
-                      duration: 0.7,
-                      delay: i * 0.15,
+                      duration: 0.4,
+                      delay: i * 0.08,
                     }}
-                    className={`absolute overflow-hidden rounded-[28px] border border-white/10 shadow-[0_20px_80px_rgba(0,0,0,0.35)] transition-all duration-700 ease-out group-hover:shadow-[0_30px_100px_rgba(255,255,255,0.08)] ${
+                    className={`absolute overflow-hidden rounded-[28px] border border-white/10 shadow-2xl transition-all duration-500 ease-out ${
                       i === 0
                         ? `
                           left-0 top-6 z-10 
                           h-44 w-60 
                           rotate-[-10deg]
-                          group-hover:left-[-20px]
+                          group-hover:left-[-10px]
                           group-hover:top-0
-                          group-hover:rotate-[-18deg]
+                          group-hover:rotate-[-14deg]
                         `
                         : i === 1
                         ? `
                           left-28 top-16 z-20 
                           h-44 w-64 
                           rotate-[2deg]
-                          group-hover:left-44
+                          group-hover:left-38
                           group-hover:top-8
-                          group-hover:rotate-[10deg]
+                          group-hover:rotate-[7deg]
                         `
                         : `
                           left-16 top-32 z-30 
                           h-40 w-56 
                           rotate-[-4deg]
                           group-hover:left-10
-                          group-hover:top-44
-                          group-hover:rotate-[-14deg]
+                          group-hover:top-38
+                          group-hover:rotate-[-9deg]
                         `
                     }`}
                   >
@@ -132,7 +133,9 @@ function GallerySection() {
                       <img
                         src={img}
                         alt=""
-                        className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
+                        width="600"
+                        height="400"
+                        className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                       />
 
                       {/* Overlay */}
@@ -145,27 +148,29 @@ function GallerySection() {
 
             {/* RIGHT FEATURED IMAGE */}
             <motion.div
-              initial={{ opacity: 0, x: 60, scale: 0.95 }}
+              initial={{ opacity: 0, x: 40, scale: 0.98 }}
               whileInView={{ opacity: 1, x: 0, scale: 1 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.9 }}
+              transition={{ duration: 0.6 }}
               whileHover={{
-                y: -10,
+                y: -5,
               }}
               className="group relative"
             >
               {/* Glow */}
-              <div className="absolute inset-0 rounded-[40px] bg-tech-pink/10 blur-3xl transition duration-700 group-hover:scale-110" />
+              <div className="absolute inset-0 rounded-[40px] bg-tech-pink/10 blur-2xl transition duration-500 group-hover:scale-105" />
 
               {/* Main Image */}
-              <div className="relative overflow-hidden rounded-[40px] border border-white/10 bg-white/5 shadow-[0_0_80px_rgba(255,255,255,0.05)] backdrop-blur-md">
+              <div className="relative overflow-hidden rounded-[40px] border border-white/10 bg-white/5 shadow-2xl backdrop-blur-md">
                 <img
                   src={
                     event?.featured ||
                     'https://placehold.co/800x600/111827/ffffff?text=No+Image'
                   }
                   alt={event?.title || 'Event'}
-                  className="h-[500px] w-full object-cover transition duration-700 group-hover:scale-105"
+                  width="1200"
+                  height="700"
+                  className="h-[500px] w-full object-cover transition duration-500 group-hover:scale-105"
                 />
 
                 {/* Overlay */}
@@ -184,7 +189,7 @@ function GallerySection() {
               </div>
             </motion.div>
 
-            {/* Mobile Floating Images */}
+            {/* Mobile Images */}
             <div className="mt-8 flex gap-4 overflow-x-auto md:hidden">
               {(event?.images || []).map((img, i) => (
                 <div
@@ -194,6 +199,8 @@ function GallerySection() {
                   <img
                     src={img}
                     alt=""
+                    width="400"
+                    height="300"
                     className="h-40 w-full object-cover"
                   />
                 </div>
