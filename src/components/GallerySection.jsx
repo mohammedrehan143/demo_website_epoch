@@ -10,30 +10,30 @@ function GallerySection() {
       {/* More Visible Bluish Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#dceeff] via-[#edf6ff] to-[#fff3f8]" />
 
-      {/* Glow Effects */}
-      <div className="absolute left-[-120px] top-40 h-[420px] w-[420px] rounded-full bg-pink-200/35 blur-[170px]" />
+      {/* Optimized Glow Effects */}
+      <div className="absolute left-[-120px] top-40 h-[320px] w-[320px] rounded-full bg-pink-200/30 blur-[90px]" />
 
-      <div className="absolute right-[-100px] top-[40%] h-[420px] w-[420px] rounded-full bg-sky-300/50 blur-[180px]" />
+      <div className="absolute right-[-100px] top-[40%] h-[320px] w-[320px] rounded-full bg-sky-300/35 blur-[100px]" />
 
-      <div className="absolute bottom-0 left-[35%] h-[320px] w-[320px] rounded-full bg-blue-200/40 blur-[150px]" />
+      <div className="absolute bottom-0 left-[35%] h-[240px] w-[240px] rounded-full bg-blue-200/30 blur-[80px]" />
 
       {/* Heading */}
       <div className="relative z-10 mx-auto max-w-5xl text-center">
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.4 }}
           className="font-clean text-xs tracking-[0.35em] text-pink-400"
         >
           GALLERY
         </motion.p>
 
         <motion.h2
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.5 }}
           className="mt-4 font-display text-5xl font-semibold leading-tight text-[#1d2d44] md:text-7xl"
         >
           Immersive <span className="text-sky-400">Event</span> Experiences
@@ -43,7 +43,7 @@ function GallerySection() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.2, duration: 0.8 }}
+          transition={{ duration: 0.5 }}
           className="mx-auto mt-6 max-w-2xl font-clean text-sm leading-7 text-[#526172] md:text-base"
         >
           Every event tells a story — innovation, collaboration, creativity,
@@ -52,20 +52,20 @@ function GallerySection() {
       </div>
 
       {/* Events */}
-      <div className="relative z-10 mt-32 space-y-44">
+      <div className="relative z-10 mt-28 space-y-36">
         {(gallery || []).map((event, index) => (
           <div
             key={event?.id || index}
-            className={`grid items-center gap-16 md:grid-cols-2 ${
+            className={`grid items-center gap-14 md:grid-cols-2 ${
               index % 2 !== 0 ? 'md:[&>*:first-child]:order-2' : ''
             }`}
           >
             {/* LEFT CONTENT */}
             <motion.div
-              initial={{ opacity: 0, x: -40 }}
+              initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.35 }}
               className="relative"
             >
               <p className="font-clean text-xs tracking-[0.3em] text-sky-400">
@@ -81,90 +81,83 @@ function GallerySection() {
               </p>
 
               {/* Floating Images */}
-              <div className="group relative mt-16 hidden h-[320px] w-full md:block">
-                {(event?.images || []).map((img, i) => (
-                  <motion.div
+              <div className="group relative mt-14 hidden h-[320px] w-full md:block">
+                {(event?.images || []).slice(0, 3).map((img, i) => (
+                  <div
                     key={i}
-                    initial={{ opacity: 0, y: 15 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{
-                      duration: 0.4,
-                      delay: i * 0.08,
-                    }}
-                    className={`absolute overflow-hidden rounded-[28px]
+                    className={`absolute overflow-hidden rounded-[26px]
                     border border-white/50
-                    bg-white/35
-                    backdrop-blur-2xl
-                    shadow-[0_10px_40px_rgba(96,165,250,0.18)]
-                    transition-all duration-500 ease-out ${
+                    bg-white/25
+                    ring-1 ring-white/20
+                    shadow-[0_10px_28px_rgba(96,165,250,0.14)]
+                    backdrop-blur-[2px]
+                    transition-transform duration-200 ease-out will-change-transform
+                    hover:-translate-y-1 hover:scale-[1.02] ${
                       i === 0
                         ? `
                           left-0 top-6 z-10 
                           h-44 w-60 
-                          rotate-[-10deg]
-                          group-hover:left-[-10px]
-                          group-hover:top-0
-                          group-hover:rotate-[-14deg]
+                          rotate-[-8deg]
                         `
                         : i === 1
                         ? `
-                          left-28 top-16 z-20 
+                          left-28 top-20 z-20 
                           h-44 w-64 
-                          rotate-[2deg]
-                          group-hover:left-38
-                          group-hover:top-8
-                          group-hover:rotate-[7deg]
+                          rotate-[4deg]
                         `
                         : `
-                          left-16 top-32 z-30 
+                          left-16 top-40 z-30 
                           h-40 w-56 
-                          rotate-[-4deg]
-                          group-hover:left-10
-                          group-hover:top-38
-                          group-hover:rotate-[-9deg]
+                          rotate-[-5deg]
                         `
                     }`}
                   >
+                    {/* Light Reflection */}
+                    <div className="absolute inset-0 z-10 bg-gradient-to-br from-white/15 via-transparent to-transparent pointer-events-none" />
+
                     <div className="relative h-full w-full overflow-hidden">
                       <img
                         src={img}
                         alt=""
+                        loading="lazy"
+                        decoding="async"
                         width="600"
                         height="400"
-                        className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                        className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
                       />
 
-                      <div className="absolute inset-0 bg-gradient-to-t from-blue-100/30 via-transparent to-pink-100/15" />
+                      {/* Premium Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-white/10 opacity-70" />
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             </motion.div>
 
             {/* RIGHT FEATURED IMAGE */}
             <motion.div
-              initial={{ opacity: 0, x: 40, scale: 0.98 }}
-              whileInView={{ opacity: 1, x: 0, scale: 1 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6 }}
-              whileHover={{ y: -5 }}
-              className="group relative"
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.35 }}
+              className="relative"
             >
-              {/* Glow */}
-              <div className="absolute inset-0 rounded-[40px] bg-gradient-to-r from-sky-200/40 to-pink-200/25 blur-3xl transition duration-500 group-hover:scale-105" />
+              {/* Reduced Glow */}
+              <div className="absolute inset-0 rounded-[40px] bg-gradient-to-r from-sky-200/20 to-pink-200/15 blur-xl" />
 
               {/* Main Image */}
-              <div className="relative overflow-hidden rounded-[40px] border border-white/50 bg-white/35 shadow-2xl backdrop-blur-2xl">
+              <div className="relative overflow-hidden rounded-[36px] border border-white/40 bg-white/20 shadow-lg">
                 <img
                   src={
                     event?.featured ||
                     'https://placehold.co/800x600/111827/ffffff?text=No+Image'
                   }
                   alt={event?.title || 'Event'}
+                  loading="lazy"
+                  decoding="async"
                   width="1200"
                   height="700"
-                  className="h-[500px] w-full object-cover transition duration-500 group-hover:scale-105"
+                  className="h-[480px] w-full object-cover transition-transform duration-200 hover:scale-[1.01]"
                 />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
@@ -183,14 +176,16 @@ function GallerySection() {
 
             {/* Mobile Images */}
             <div className="mt-8 flex gap-4 overflow-x-auto md:hidden">
-              {(event?.images || []).map((img, i) => (
+              {(event?.images || []).slice(0, 3).map((img, i) => (
                 <div
                   key={i}
-                  className="min-w-[220px] overflow-hidden rounded-2xl border border-white/50 bg-white/35 backdrop-blur-2xl"
+                  className="min-w-[220px] overflow-hidden rounded-2xl border border-white/30 bg-white/20"
                 >
                   <img
                     src={img}
                     alt=""
+                    loading="lazy"
+                    decoding="async"
                     width="400"
                     height="300"
                     className="h-40 w-full object-cover"
