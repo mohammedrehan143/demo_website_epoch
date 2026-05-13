@@ -1,31 +1,15 @@
+import { useState } from 'react'
+import { useReducedMotion } from 'framer-motion'
+import { Autoplay, Keyboard, Navigation, Pagination } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
 import { members } from '../data/siteData'
 
 function MembersSection() {
-  const layout = [
-    { left: '6%', top: '10%' },
-    { left: '26%', top: '4%' },
-    { left: '50%', top: '12%' },
-    { left: '73%', top: '8%' },
-    { left: '12%', top: '46%' },
-    { left: '36%', top: '40%' },
-    { left: '58%', top: '44%' },
-    { left: '80%', top: '48%' },
-    { left: '22%', top: '72%' },
-    { left: '46%', top: '78%' },
-    { left: '70%', top: '74%' },
-    { left: '88%', top: '68%' },
-  ]
-
-  const layoutMobile = [
-    { left: '4%', top: '6%' },
-    { left: '44%', top: '2%' },
-    { left: '68%', top: '16%' },
-    { left: '10%', top: '34%' },
-    { left: '52%', top: '40%' },
-    { left: '72%', top: '58%' },
-    { left: '18%', top: '62%' },
-    { left: '48%', top: '74%' },
-  ]
+  const reduced = useReducedMotion()
+  const [activeMember, setActiveMember] = useState(null)
 
   return (
     <section id="members" className="reveal-root mt-10">
@@ -34,60 +18,66 @@ function MembersSection() {
         Our <span className="text-tech-pink">#1</span> Goal Was To Build{' '}
         <span className="text-transparent [-webkit-text-stroke:1px_rgba(17,17,17,0.28)]">A Great Team</span>
       </h2>
-      <div className="relative mt-6 hidden min-h-[640px] md:block">
-        {members.slice(0, layout.length).map((member, idx) => {
-          const pos = layout[idx]
-          return (
-            <article
-              key={member.id}
-              className="tilt-3d team-card-fx absolute w-[170px] select-none rounded-2xl border border-tech-line bg-tech-card/70 p-2 shadow-[0_18px_60px_rgba(17,17,17,0.12)] backdrop-blur"
-              style={{
-                left: pos.left,
-                top: pos.top,
-              }}
-            >
-              <div className="reveal overflow-hidden rounded-xl bg-tech-bg/60 p-2">
-                <img
-                  src={member.photo}
-                  alt={member.name}
-                  className="h-[112px] w-full rounded-lg object-cover"
-                />
-                <div className="mt-2 flex items-center justify-between">
-                  <p className="font-display text-sm font-semibold">{member.name}</p>
-                  <span className="rounded-full bg-tech-bg/70 px-2 py-1 font-clean text-[10px] text-tech-muted">
-                    {member.role}
-                  </span>
-                </div>
-              </div>
-            </article>
-          )
-        })}
-      </div>
 
-      <div className="relative mt-6 min-h-[520px] md:hidden">
-        {members.slice(0, layoutMobile.length).map((member, idx) => {
-          const pos = layoutMobile[idx]
-          return (
-            <article
-              key={member.id}
-              className="tilt-3d team-card-fx absolute w-[150px] select-none rounded-2xl border border-tech-line bg-tech-card/70 p-2 shadow-[0_18px_60px_rgba(17,17,17,0.12)] backdrop-blur"
-              style={{
-                left: pos.left,
-                top: pos.top,
-              }}
-            >
-              <div className="reveal overflow-hidden rounded-xl bg-tech-bg/60 p-2">
-                <img src={member.photo} alt={member.name} className="h-[92px] w-full rounded-lg object-cover" />
-                <div className="mt-2">
-                  <p className="font-display text-sm font-semibold leading-tight">{member.name}</p>
-                  <span className="mt-1 inline-block rounded-full bg-tech-bg/70 px-2 py-1 font-clean text-[10px] text-tech-muted">
-                    {member.role}
-                  </span>
+      <div className="members-swiper-host relative mt-6 overflow-hidden">
+        <div className="members-swiper-glow" aria-hidden />
+
+        <Swiper
+          className="members-swiper"
+          modules={[Navigation, Pagination, Autoplay, Keyboard]}
+          spaceBetween={18}
+          slidesPerView={1}
+          centeredSlides={false}
+          slideToClickedSlide={true}
+          breakpoints={{
+            640: { slidesPerView: 2, spaceBetween: 18 },
+            1024: { slidesPerView: 3, spaceBetween: 22 },
+            1280: { slidesPerView: 4, spaceBetween: 24 },
+          }}
+          rewind={true}
+          speed={620}
+          grabCursor
+          keyboard={{ enabled: true }}
+          navigation
+          pagination={{ clickable: true, dynamicBullets: true }}
+          autoplay={
+            reduced
+              ? false
+              : {
+                  delay: 4200,
+                  disableOnInteraction: false,
+                  pauseOnMouseEnter: true,
+                }
+          }
+        >
+          {members.map((member) => (
+            <SwiperSlide key={member.id} className="!h-auto">
+              <button
+                type="button"
+                onClick={() => setActiveMember(member.id)}
+                className={`tilt-3d team-card-fx group flex min-h-[360px] w-full flex-col items-center rounded-[2rem] border border-tech-line bg-tech-card/85 p-4 text-left shadow-[0_18px_40px_rgba(17,17,17,0.12)] backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-tech-accent/50 hover:shadow-[0_20px_60px_rgba(17,17,17,0.16),0_0_0_1px_rgba(232,90,207,0.18),0_0_48px_rgba(94,217,243,0.14)] focus-visible:outline-none ${
+                  activeMember === member.id
+                    ? 'border-tech-pink/70 shadow-[0_22px_64px_rgba(232,90,207,0.18),0_0_0_1px_rgba(94,217,243,0.32),0_0_48px_rgba(94,217,243,0.22)]'
+                    : ''
+                }`}
+              >
+                <div className="relative overflow-hidden rounded-[1.75rem] bg-gradient-to-br from-white/10 via-white/5 to-white/10 p-1 shadow-inner shadow-black/10">
+                  <img
+                    src={member.photo}
+                    alt={member.name}
+                    className="h-[220px] w-full rounded-[1.5rem] object-cover"
+                  />
+                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
                 </div>
-              </div>
-            </article>
-          )
-        })}
+
+                <div className="mt-4 w-full text-center">
+                  <p className="font-display text-lg font-semibold text-white sm:text-xl">{member.name}</p>
+                  <p className="mt-2 text-sm text-tech-muted sm:text-base">{member.role}</p>
+                </div>
+              </button>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </section>
   )

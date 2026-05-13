@@ -32,12 +32,12 @@ export function useGsapEffects(scopeRef) {
             rotateX: 0,
             rotateY: 0,
             z: 0,
-            ease: 'none',
+            ease: 'power1.out',
             scrollTrigger: {
               trigger: card,
-              start: 'top 85%',
-              end: 'bottom 50%',
-              scrub: true,
+              start: 'top 90%',
+              end: 'bottom 60%',
+              scrub: 0.45,
             },
           },
         )

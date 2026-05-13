@@ -5,6 +5,7 @@ html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 #root {
@@ -664,6 +665,26 @@ a,
   z-index: 2;
 }
 
+.tilt-3d,
+.team-card-fx,
+.event-card-article,
+.members-swiper .swiper-slide,
+.events-swiper .swiper-slide,
+.hero-ambient-ring {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+}
+
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 .events-swiper-host {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
@@ -682,6 +703,40 @@ a,
   filter: blur(28px);
   opacity: 0.85;
   z-index: 0;
+}
+
+.members-swiper-host {
+  padding: 1rem 0 1.5rem;
+}
+
+.members-swiper-glow {
+  pointer-events: none;
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  width: min(92%, 840px);
+  height: min(58%, 260px);
+  transform: translate3d(-50%, -50%, 0);
+  border-radius: 2.5rem;
+  background: radial-gradient(ellipse at 50% 50%, rgb(130 183 255 / 0.2), rgb(232 90 207 / 0.12), transparent 70%);
+  filter: blur(36px);
+  opacity: 0.72;
+  z-index: 0;
+}
+
+.members-swiper .swiper-button-prev,
+.members-swiper .swiper-button-next {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.members-swiper .swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.35);
+  opacity: 1;
+}
+
+.members-swiper .swiper-pagination-bullet-active {
+  background: rgb(94 217 243);
+  width: 12px;
 }
 
 .events-swiper {
