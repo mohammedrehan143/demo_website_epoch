@@ -5,17 +5,17 @@ function GallerySection() {
   return (
     <section
       id="gallery"
-      className="relative mt-32 overflow-hidden px-4 py-24 md:px-10"
+      className="relative mt-24 overflow-hidden px-4 py-20 sm:mt-32 sm:py-24 md:px-10"
     >
-      {/* More Visible Bluish Background */}
+      {/* Smooth Premium Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#dceeff] via-[#edf6ff] to-[#fff3f8]" />
 
-      {/* Optimized Glow Effects */}
-      <div className="absolute left-[-120px] top-40 h-[320px] w-[320px] rounded-full bg-pink-200/30 blur-[90px]" />
+      {/* Soft Glow Effects */}
+      <div className="absolute left-[-120px] top-40 h-[320px] w-[320px] rounded-full bg-pink-200/30 blur-[100px]" />
 
-      <div className="absolute right-[-100px] top-[40%] h-[320px] w-[320px] rounded-full bg-sky-300/35 blur-[100px]" />
+      <div className="absolute right-[-100px] top-[40%] h-[320px] w-[320px] rounded-full bg-sky-300/35 blur-[110px]" />
 
-      <div className="absolute bottom-0 left-[35%] h-[240px] w-[240px] rounded-full bg-blue-200/30 blur-[80px]" />
+      <div className="absolute bottom-0 left-[35%] h-[240px] w-[240px] rounded-full bg-blue-200/30 blur-[90px]" />
 
       {/* Heading */}
       <div className="relative z-10 mx-auto max-w-5xl text-center">
@@ -23,8 +23,8 @@ function GallerySection() {
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
-          className="font-clean text-xs tracking-[0.35em] text-pink-400"
+          transition={{ duration: 0.9, ease: 'easeOut' }}
+          className="font-clean text-[10px] tracking-[0.35em] text-pink-400 sm:text-xs"
         >
           GALLERY
         </motion.p>
@@ -33,8 +33,8 @@ function GallerySection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mt-4 font-display text-5xl font-semibold leading-tight text-[#1d2d44] md:text-7xl"
+          transition={{ duration: 1, ease: 'easeOut' }}
+          className="mt-4 font-display text-4xl font-semibold leading-tight text-[#1d2d44] sm:text-5xl md:text-7xl"
         >
           Immersive <span className="text-sky-400">Event</span> Experiences
         </motion.h2>
@@ -43,7 +43,7 @@ function GallerySection() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 1, ease: 'easeOut' }}
           className="mx-auto mt-6 max-w-2xl font-clean text-sm leading-7 text-[#526172] md:text-base"
         >
           Every event tells a story — innovation, collaboration, creativity,
@@ -52,31 +52,31 @@ function GallerySection() {
       </div>
 
       {/* Events */}
-      <div className="relative z-10 mt-28 space-y-36">
+      <div className="relative z-10 mt-20 space-y-24 sm:mt-28 sm:space-y-36">
         {(gallery || []).map((event, index) => (
           <div
             key={event?.id || index}
-            className={`grid items-center gap-14 md:grid-cols-2 ${
+            className={`grid items-center gap-12 md:grid-cols-2 md:gap-14 ${
               index % 2 !== 0 ? 'md:[&>*:first-child]:order-2' : ''
             }`}
           >
             {/* LEFT CONTENT */}
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.15 }}
-              transition={{ duration: 0.35 }}
+              transition={{ duration: 0.8, ease: 'easeOut' }}
               className="relative"
             >
-              <p className="font-clean text-xs tracking-[0.3em] text-sky-400">
+              <p className="font-clean text-[10px] tracking-[0.3em] text-sky-400 sm:text-xs">
                 EVENT EXPERIENCE
               </p>
 
-              <h3 className="mt-5 font-display text-4xl font-semibold leading-tight text-[#1d2d44] md:text-6xl">
+              <h3 className="mt-5 font-display text-3xl font-semibold leading-tight text-[#1d2d44] sm:text-4xl md:text-6xl">
                 {event?.title || 'Untitled Event'}
               </h3>
 
-              <p className="mt-8 max-w-xl font-clean text-sm leading-7 text-[#526172] md:text-base">
+              <p className="mt-6 max-w-xl font-clean text-sm leading-7 text-[#526172] md:mt-8 md:text-base">
                 {event?.description || 'No description available'}
               </p>
 
@@ -89,10 +89,11 @@ function GallerySection() {
                     border border-white/50
                     bg-white/25
                     ring-1 ring-white/20
-                    shadow-[0_10px_28px_rgba(96,165,250,0.14)]
-                    backdrop-blur-[2px]
-                    transition-transform duration-200 ease-out will-change-transform
-                    hover:-translate-y-1 hover:scale-[1.02] ${
+                    shadow-[0_12px_40px_rgba(96,165,250,0.12)]
+                    backdrop-blur-[3px]
+                    transition-all duration-700 ease-out will-change-transform
+                    hover:-translate-y-2 hover:scale-[1.03]
+                    transform-gpu ${
                       i === 0
                         ? `
                           left-0 top-6 z-10 
@@ -113,7 +114,7 @@ function GallerySection() {
                     }`}
                   >
                     {/* Light Reflection */}
-                    <div className="absolute inset-0 z-10 bg-gradient-to-br from-white/15 via-transparent to-transparent pointer-events-none" />
+                    <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-br from-white/15 via-transparent to-transparent" />
 
                     <div className="relative h-full w-full overflow-hidden">
                       <img
@@ -123,7 +124,7 @@ function GallerySection() {
                         decoding="async"
                         width="600"
                         height="400"
-                        className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+                        className="h-full w-full object-cover transition-all duration-700 ease-out hover:scale-105"
                       />
 
                       {/* Premium Overlay */}
@@ -136,17 +137,17 @@ function GallerySection() {
 
             {/* RIGHT FEATURED IMAGE */}
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.15 }}
-              transition={{ duration: 0.35 }}
+              transition={{ duration: 0.8, ease: 'easeOut' }}
               className="relative"
             >
-              {/* Reduced Glow */}
-              <div className="absolute inset-0 rounded-[40px] bg-gradient-to-r from-sky-200/20 to-pink-200/15 blur-xl" />
+              {/* Smooth Glow */}
+              <div className="absolute inset-0 rounded-[40px] bg-gradient-to-r from-sky-200/20 to-pink-200/15 blur-2xl" />
 
               {/* Main Image */}
-              <div className="relative overflow-hidden rounded-[36px] border border-white/40 bg-white/20 shadow-lg">
+              <div className="relative overflow-hidden rounded-[30px] border border-white/40 bg-white/20 shadow-[0_10px_40px_rgba(96,165,250,0.12)] transform-gpu sm:rounded-[36px]">
                 <img
                   src={
                     event?.featured ||
@@ -157,17 +158,17 @@ function GallerySection() {
                   decoding="async"
                   width="1200"
                   height="700"
-                  className="h-[480px] w-full object-cover transition-transform duration-200 hover:scale-[1.01]"
+                  className="h-[320px] w-full object-cover transition-all duration-700 ease-out hover:scale-[1.03] sm:h-[480px]"
                 />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
 
-                <div className="absolute bottom-0 left-0 p-8">
-                  <p className="font-display text-3xl font-semibold text-white">
+                <div className="absolute bottom-0 left-0 p-5 sm:p-8">
+                  <p className="font-display text-2xl font-semibold text-white sm:text-3xl">
                     {event?.title || 'Untitled Event'}
                   </p>
 
-                  <p className="mt-2 font-clean text-sm text-white/90">
+                  <p className="mt-2 font-clean text-xs text-white/90 sm:text-sm">
                     EPOCH Tech Club Experience
                   </p>
                 </div>
@@ -175,11 +176,11 @@ function GallerySection() {
             </motion.div>
 
             {/* Mobile Images */}
-            <div className="mt-8 flex gap-4 overflow-x-auto md:hidden">
+            <div className="mt-6 flex gap-4 overflow-x-auto scroll-smooth pb-2 md:hidden">
               {(event?.images || []).slice(0, 3).map((img, i) => (
                 <div
                   key={i}
-                  className="min-w-[220px] overflow-hidden rounded-2xl border border-white/30 bg-white/20"
+                  className="min-w-[220px] overflow-hidden rounded-2xl border border-white/30 bg-white/20 shadow-[0_10px_30px_rgba(96,165,250,0.08)]"
                 >
                   <img
                     src={img}
