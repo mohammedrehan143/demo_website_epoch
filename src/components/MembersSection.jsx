@@ -13,185 +13,61 @@ function MembersSection() {
   const reduced = useReducedMotion()
   const [activeMember, setActiveMember] = useState(null)
 
-  const presentTeams = [
+  const presentMembers = [
     {
-      title: 'Core Team',
-      members: [
-        {
-          role: 'President',
-          name: 'Aarav Sharma',
-          image:
-            'https://images.unsplash.com/photo-1500648767791-00dcc994a43d?q=80&w=1200&auto=format&fit=crop',
-        },
-        {
-          role: 'Vice President',
-          name: 'Maya Iyer',
-          image:
-            'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200&auto=format&fit=crop',
-        },
-        {
-          role: 'Secretary',
-          name: 'Rahul Verma',
-          image:
-            'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1200&auto=format&fit=crop',
-        },
-        {
-          role: 'Joint Secretary',
-          name: 'Neha Gupta',
-          image:
-            'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1200&auto=format&fit=crop',
-        },
-        {
-          role: 'Executive',
-          name: 'Kabir Khan',
-          image:
-            'https://images.unsplash.com/photo-1500648767791-00dcc994a43d?q=80&w=1200&auto=format&fit=crop',
-        },
-      ],
+      role: 'President',
+      name: 'Aarav Sharma',
+      image:
+        'https://images.unsplash.com/photo-1500648767791-00dcc994a43d?q=80&w=1200&auto=format&fit=crop',
     },
 
     {
-      title: 'Tech Team',
-      members: [
-        {
-          role: 'Tech Head',
-          name: 'Aditya Nair',
-          image:
-            'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1200&auto=format&fit=crop',
-        },
-        {
-          role: 'Frontend',
-          name: 'Vihaan Singh',
-          image:
-            'https://images.unsplash.com/photo-1500648767791-00dcc994a43d?q=80&w=1200&auto=format&fit=crop',
-        },
-        {
-          role: 'Backend',
-          name: 'Rohit Jain',
-          image:
-            'https://images.unsplash.com/photo-1500648767791-00dcc994a43d?q=80&w=1200&auto=format&fit=crop',
-        },
-        {
-          role: 'UI Engineer',
-          name: 'Aman Roy',
-          image:
-            'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1200&auto=format&fit=crop',
-        },
-        {
-          role: 'Developer',
-          name: 'Karan Das',
-          image:
-            'https://images.unsplash.com/photo-1500648767791-00dcc994a43d?q=80&w=1200&auto=format&fit=crop',
-        },
-      ],
+      role: 'Vice President',
+      name: 'Maya Iyer',
+      image:
+        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200&auto=format&fit=crop',
     },
 
     {
-      title: 'Design Team',
-      members: [
-        {
-          role: 'Design Head',
-          name: 'Sara Menon',
-          image:
-            'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1200&auto=format&fit=crop',
-        },
-        {
-          role: 'UI Designer',
-          name: 'Ananya Das',
-          image:
-            'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200&auto=format&fit=crop',
-        },
-        {
-          role: 'Graphic Designer',
-          name: 'Ishita Rao',
-          image:
-            'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1200&auto=format&fit=crop',
-        },
-        {
-          role: 'Creative Lead',
-          name: 'Priya Kulkarni',
-          image:
-            'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200&auto=format&fit=crop',
-        },
-        {
-          role: 'Motion Designer',
-          name: 'Diya Kapoor',
-          image:
-            'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1200&auto=format&fit=crop',
-        },
-      ],
+      role: 'Tech Head',
+      name: 'Aditya Nair',
+      image:
+        'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1200&auto=format&fit=crop',
     },
 
     {
-      title: 'Event Team',
-      members: [
-        {
-          role: 'Event Head',
-          name: 'Ishita Rao',
-          image:
-            'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200&auto=format&fit=crop',
-        },
-        {
-          role: 'Coordinator',
-          name: 'Arjun Patel',
-          image:
-            'https://images.unsplash.com/photo-1500648767791-00dcc994a43d?q=80&w=1200&auto=format&fit=crop',
-        },
-        {
-          role: 'Management',
-          name: 'Riya Sharma',
-          image:
-            'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1200&auto=format&fit=crop',
-        },
-        {
-          role: 'Operations',
-          name: 'Rahul Mehta',
-          image:
-            'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1200&auto=format&fit=crop',
-        },
-        {
-          role: 'Volunteer Lead',
-          name: 'Sneha Joshi',
-          image:
-            'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200&auto=format&fit=crop',
-        },
-      ],
+      role: 'UI Designer',
+      name: 'Ananya Das',
+      image:
+        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200&auto=format&fit=crop',
     },
 
     {
-      title: 'PR Team',
-      members: [
-        {
-          role: 'PR Head',
-          name: 'Vihaan Singh',
-          image:
-            'https://images.unsplash.com/photo-1500648767791-00dcc994a43d?q=80&w=1200&auto=format&fit=crop',
-        },
-        {
-          role: 'Outreach',
-          name: 'Neha Kapoor',
-          image:
-            'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1200&auto=format&fit=crop',
-        },
-        {
-          role: 'Social Media',
-          name: 'Aisha Khan',
-          image:
-            'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200&auto=format&fit=crop',
-        },
-        {
-          role: 'Branding',
-          name: 'Rohan Verma',
-          image:
-            'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1200&auto=format&fit=crop',
-        },
-        {
-          role: 'Marketing',
-          name: 'Kriti Nair',
-          image:
-            'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1200&auto=format&fit=crop',
-        },
-      ],
+      role: 'Event Head',
+      name: 'Ishita Rao',
+      image:
+        'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1200&auto=format&fit=crop',
+    },
+
+    {
+      role: 'PR Head',
+      name: 'Vihaan Singh',
+      image:
+        'https://images.unsplash.com/photo-1500648767791-00dcc994a43d?q=80&w=1200&auto=format&fit=crop',
+    },
+
+    {
+      role: 'Frontend Developer',
+      name: 'Rohit Jain',
+      image:
+        'https://images.unsplash.com/photo-1500648767791-00dcc994a43d?q=80&w=1200&auto=format&fit=crop',
+    },
+
+    {
+      role: 'Graphic Designer',
+      name: 'Sara Menon',
+      image:
+        'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1200&auto=format&fit=crop',
     },
   ]
 
@@ -216,30 +92,32 @@ function MembersSection() {
       </h2>
 
       {/* =========================================================
-          FORMER MEMBERS SWIPER
+          FORMER MEMBERS SLIDER
       ========================================================= */}
 
       <div className="members-swiper-host relative mt-8 overflow-hidden">
-        <div className="members-swiper-glow" aria-hidden />
-
         <Swiper
           className="members-swiper"
           modules={[Navigation, Pagination, Autoplay, Keyboard]}
-          spaceBetween={16}
-          slidesPerView={1.08}
+          spaceBetween={18}
+          slidesPerView={1.1}
           centeredSlides={false}
           slideToClickedSlide={true}
           breakpoints={{
-            640: { slidesPerView: 2, spaceBetween: 18 },
+            480: { slidesPerView: 1.4, spaceBetween: 18 },
+            640: { slidesPerView: 2, spaceBetween: 20 },
             1024: { slidesPerView: 3, spaceBetween: 22 },
             1280: { slidesPerView: 4, spaceBetween: 24 },
           }}
-          rewind={true}
-          speed={620}
+          rewind
+          speed={650}
           grabCursor
           keyboard={{ enabled: true }}
           navigation
-          pagination={{ clickable: true, dynamicBullets: true }}
+          pagination={{
+            clickable: true,
+            dynamicBullets: true,
+          }}
           autoplay={
             reduced
               ? false
@@ -255,28 +133,42 @@ function MembersSection() {
               <button
                 type="button"
                 onClick={() => setActiveMember(member.id)}
-                className={`tilt-3d team-card-fx group flex min-h-[280px] w-full flex-col items-center rounded-[1.6rem] border border-tech-line bg-tech-card/85 p-3 text-left shadow-[0_18px_40px_rgba(17,17,17,0.12)] backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-tech-accent/50 hover:shadow-[0_20px_60px_rgba(17,17,17,0.16),0_0_0_1px_rgba(232,90,207,0.18),0_0_48px_rgba(94,217,243,0.14)] focus-visible:outline-none sm:min-h-[360px] sm:rounded-[2rem] sm:p-4 ${
+                className={`group relative overflow-hidden rounded-[1.8rem] bg-[#070b2a] transition-all duration-500 hover:-translate-y-2 ${
                   activeMember === member.id
-                    ? 'border-tech-pink/70 shadow-[0_22px_64px_rgba(232,90,207,0.18),0_0_0_1px_rgba(94,217,243,0.32),0_0_48px_rgba(94,217,243,0.22)]'
+                    ? 'shadow-[0_0_40px_rgba(91,180,255,0.18)]'
                     : ''
                 }`}
               >
-                <div className="relative overflow-hidden rounded-[1.4rem] bg-gradient-to-br from-white/10 via-white/5 to-white/10 p-1 shadow-inner shadow-black/10 sm:rounded-[1.75rem]">
+                {/* IMAGE */}
+
+                <div className="relative overflow-hidden rounded-[1.8rem]">
                   <img
                     src={member.photo}
                     alt={member.name}
-                    className="h-[180px] w-full rounded-[1.2rem] object-cover sm:h-[220px] sm:rounded-[1.5rem]"
+                    className="h-[300px] w-full object-cover transition duration-700 group-hover:scale-105 sm:h-[360px]"
                   />
 
-                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                  {/* OVERLAY */}
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#050816] via-transparent to-transparent" />
+
+                  {/* SOFT GLOW */}
+
+                  <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 via-transparent to-blue-500/10 opacity-0 transition duration-500 group-hover:opacity-100" />
+
+                  {/* LIGHT SWEEP */}
+
+                  <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition duration-1000 group-hover:translate-x-full" />
                 </div>
 
-                <div className="mt-4 w-full text-center">
-                  <p className="font-display text-sm font-semibold text-white sm:text-xl">
-                    {member.name}
-                  </p>
+                {/* TEXT */}
 
-                  <p className="mt-2 text-[11px] text-tech-muted sm:text-base">
+                <div className="absolute bottom-5 left-0 w-full px-5 text-left">
+                  <h3 className="font-display text-lg font-semibold text-white sm:text-2xl">
+                    {member.name}
+                  </h3>
+
+                  <p className="mt-1 text-[11px] text-cyan-200/70 sm:text-sm">
                     {member.role}
                   </p>
                 </div>
@@ -291,113 +183,98 @@ function MembersSection() {
       ========================================================= */}
 
       <section className="relative mt-28 overflow-hidden">
-        <div className="relative z-10 text-center">
-          <p className="font-clean text-[10px] tracking-[0.35em] text-tech-muted sm:text-xs">
-            PRESENT MEMBERS
-          </p>
+        <p className="font-clean text-[10px] tracking-[0.35em] text-tech-muted sm:text-xs">
+          PRESENT MEMBERS
+        </p>
 
-          <h2 className="mt-4 font-display text-3xl font-semibold leading-tight sm:text-4xl md:text-5xl lg:text-6xl">
-            Meet The{' '}
-            <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-pink-400 bg-clip-text text-transparent">
-              Present Team
-            </span>
-          </h2>
+        <h2 className="mt-4 max-w-5xl font-display text-3xl font-semibold leading-tight sm:text-4xl md:text-5xl lg:text-6xl">
+          Meet The{' '}
+          <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-pink-400 bg-clip-text text-transparent">
+            Present Team
+          </span>
+        </h2>
+
+        {/* =========================================================
+            PRESENT MEMBERS SLIDER
+        ========================================================= */}
+
+        <div className="members-swiper-host relative mt-10 overflow-hidden">
+          <Swiper
+            className="members-swiper"
+            modules={[Navigation, Pagination, Autoplay, Keyboard]}
+            spaceBetween={18}
+            slidesPerView={1.1}
+            centeredSlides={false}
+            slideToClickedSlide={true}
+            breakpoints={{
+              480: { slidesPerView: 1.4, spaceBetween: 18 },
+              640: { slidesPerView: 2, spaceBetween: 20 },
+              1024: { slidesPerView: 3, spaceBetween: 22 },
+              1280: { slidesPerView: 4, spaceBetween: 24 },
+            }}
+            rewind
+            speed={650}
+            grabCursor
+            keyboard={{ enabled: true }}
+            navigation
+            pagination={{
+              clickable: true,
+              dynamicBullets: true,
+            }}
+            autoplay={
+              reduced
+                ? false
+                : {
+                    delay: 4200,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
+                  }
+            }
+          >
+            {presentMembers.map((member, idx) => (
+              <SwiperSlide key={idx} className="!h-auto pb-2">
+                <button
+                  type="button"
+                  className="group relative overflow-hidden rounded-[1.8rem] bg-[#070b2a] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(91,180,255,0.16)]"
+                >
+                  {/* IMAGE */}
+
+                  <div className="relative overflow-hidden rounded-[1.8rem]">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="h-[300px] w-full object-cover transition duration-700 group-hover:scale-105 sm:h-[360px]"
+                    />
+
+                    {/* OVERLAY */}
+
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#050816] via-transparent to-transparent" />
+
+                    {/* SOFT GLOW */}
+
+                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 via-transparent to-blue-500/10 opacity-0 transition duration-500 group-hover:opacity-100" />
+
+                    {/* LIGHT SWEEP */}
+
+                    <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition duration-1000 group-hover:translate-x-full" />
+                  </div>
+
+                  {/* TEXT */}
+
+                  <div className="absolute bottom-5 left-0 w-full px-5 text-left">
+                    <h3 className="font-display text-lg font-semibold text-white sm:text-2xl">
+                      {member.name}
+                    </h3>
+
+                    <p className="mt-1 text-[11px] text-cyan-200/70 sm:text-sm">
+                      {member.role}
+                    </p>
+                  </div>
+                </button>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
-
-        {presentTeams.map((team, teamIndex) => (
-          <div key={teamIndex} className="mt-20">
-            {/* TEAM TITLE */}
-
-            <div className="mb-8 flex items-center gap-4">
-              <div className="h-px flex-1 bg-gradient-to-r from-transparent to-cyan-300/30" />
-
-              <h3 className="font-display text-2xl font-semibold text-white sm:text-3xl">
-                {team.title}
-              </h3>
-
-              <div className="h-px flex-1 bg-gradient-to-l from-transparent to-pink-300/30" />
-            </div>
-
-            {/* TEAM SWIPER */}
-
-            <div className="members-swiper-host relative overflow-hidden">
-              <div className="members-swiper-glow" aria-hidden />
-
-              <Swiper
-                className="members-swiper"
-                modules={[Navigation, Pagination, Autoplay, Keyboard]}
-                spaceBetween={16}
-                slidesPerView={1.15}
-                centeredSlides={false}
-                slideToClickedSlide={true}
-                breakpoints={{
-                  480: { slidesPerView: 1.4, spaceBetween: 16 },
-                  640: { slidesPerView: 2, spaceBetween: 18 },
-                  1024: { slidesPerView: 3, spaceBetween: 22 },
-                  1280: { slidesPerView: 4, spaceBetween: 24 },
-                }}
-                rewind={true}
-                speed={620}
-                grabCursor
-                keyboard={{ enabled: true }}
-                navigation
-                pagination={{ clickable: true, dynamicBullets: true }}
-                autoplay={
-                  reduced
-                    ? false
-                    : {
-                        delay: 4200,
-                        disableOnInteraction: false,
-                        pauseOnMouseEnter: true,
-                      }
-                }
-              >
-                {team.members.map((member, idx) => (
-                  <SwiperSlide key={idx} className="!h-auto pb-2">
-                    <div className="tilt-3d team-card-fx group relative flex min-h-[300px] w-full flex-col overflow-hidden rounded-[1.8rem] border border-tech-line bg-tech-card/85 p-3 text-left shadow-[0_18px_40px_rgba(17,17,17,0.12)] backdrop-blur transition duration-300 hover:-translate-y-2 hover:border-tech-accent/50 hover:shadow-[0_20px_60px_rgba(17,17,17,0.16),0_0_0_1px_rgba(232,90,207,0.18),0_0_48px_rgba(94,217,243,0.14)] sm:min-h-[380px] sm:rounded-[2rem] sm:p-4">
-                      {/* GLOW EFFECT */}
-
-                      <div className="pointer-events-none absolute inset-0 opacity-0 transition duration-500 group-hover:opacity-100">
-                        <div className="absolute -left-10 top-0 h-32 w-32 rounded-full bg-cyan-400/20 blur-3xl" />
-                        <div className="absolute -right-10 bottom-0 h-32 w-32 rounded-full bg-pink-400/20 blur-3xl" />
-                      </div>
-
-                      {/* IMAGE */}
-
-                      <div className="relative overflow-hidden rounded-[1.4rem] bg-gradient-to-br from-white/10 via-white/5 to-white/10 p-1 shadow-inner shadow-black/10 sm:rounded-[1.75rem]">
-                        <img
-                          src={member.image}
-                          alt={member.name}
-                          className="h-[220px] w-full rounded-[1.2rem] object-cover transition duration-700 group-hover:scale-110 sm:h-[280px] sm:rounded-[1.5rem]"
-                        />
-
-                        {/* OVERLAY */}
-
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
-
-                        {/* LIGHT SWEEP */}
-
-                        <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition duration-1000 group-hover:translate-x-full" />
-                      </div>
-
-                      {/* TEXT */}
-
-                      <div className="mt-4 w-full text-center">
-                        <p className="text-[10px] tracking-[0.24em] text-cyan-300 sm:text-xs">
-                          {member.role}
-                        </p>
-
-                        <h3 className="mt-2 font-display text-base font-semibold text-white transition duration-300 group-hover:text-cyan-100 sm:text-2xl">
-                          {member.name}
-                        </h3>
-                      </div>
-                    </div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </div>
-          </div>
-        ))}
       </section>
     </section>
   )
