@@ -210,11 +210,11 @@ function UpcomingEventSection() {
 
           <div className="mt-6 max-w-6xl">
             <h2 className="font-display text-5xl font-semibold leading-[0.9] text-white sm:text-7xl md:text-[120px]">
-              DIGITAL
+             AGENTATHON
             </h2>
 
             <h2 className="font-display text-5xl font-semibold leading-[0.9] text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.18)] sm:text-7xl md:text-[120px]">
-              FRONTIERS
+              A 2 DAY EVENT
             </h2>
           </div>
         </div>
@@ -269,7 +269,7 @@ function UpcomingEventSection() {
                 </p>
 
                 <h4 className="mt-3 text-lg font-semibold text-white">
-                  09:00 PM
+                  9:00AM-4.00PM
                 </h4>
               </div>
 
