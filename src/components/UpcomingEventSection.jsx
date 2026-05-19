@@ -89,10 +89,6 @@ function UpcomingEventSection() {
         transformOrigin: '50% 50%',
       })
 
-      /* =========================================================
-          SLOW LUXURY NUMBER TRACK
-      ========================================================= */
-
       gsap.to(numberTrack, {
         xPercent: -50,
         duration: 55,
@@ -148,9 +144,8 @@ function UpcomingEventSection() {
       className="reveal-root mt-20 overflow-x-hidden"
     >
       <div className="relative overflow-hidden rounded-[2.5rem] border border-white/5 bg-[#050816] py-16 sm:py-24">
-        {/* =========================================================
-            BACKGROUND GLOW
-        ========================================================= */}
+        
+        {/* BACKGROUND GLOW */}
 
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute left-[-10%] top-10 h-72 w-72 rounded-full bg-cyan-400/10 blur-[120px]" />
@@ -158,9 +153,7 @@ function UpcomingEventSection() {
           <div className="absolute right-[-10%] top-1/3 h-72 w-72 rounded-full bg-pink-500/10 blur-[120px]" />
         </div>
 
-        {/* =========================================================
-            SLOW NUMBER TRACK
-        ========================================================= */}
+        {/* NUMBER TRACK */}
 
         <div className="pointer-events-none absolute top-6 w-full overflow-hidden">
           <div
@@ -175,9 +168,7 @@ function UpcomingEventSection() {
           </div>
         </div>
 
-        {/* =========================================================
-            TOP MOVING TRACK
-        ========================================================= */}
+        {/* TOP TRACK */}
 
         <div className="pointer-events-none absolute inset-x-0 top-24 overflow-hidden">
           <div
@@ -195,9 +186,7 @@ function UpcomingEventSection() {
           </div>
         </div>
 
-        {/* =========================================================
-            BOTTOM MOVING TRACK
-        ========================================================= */}
+        {/* BOTTOM TRACK */}
 
         <div className="pointer-events-none absolute bottom-10 inset-x-0 overflow-hidden">
           <div
@@ -212,9 +201,7 @@ function UpcomingEventSection() {
           </div>
         </div>
 
-        {/* =========================================================
-            SECTION HEADER
-        ========================================================= */}
+        {/* HEADER */}
 
         <div className="relative z-10 px-4 sm:px-6">
           <p className="font-clean text-xs tracking-[0.28em] text-cyan-300">
@@ -232,18 +219,13 @@ function UpcomingEventSection() {
           </div>
         </div>
 
-        {/* =========================================================
-            MAIN GRID
-        ========================================================= */}
+        {/* MAIN GRID */}
 
         <div className="relative z-10 mt-14 grid items-center gap-12 px-4 sm:px-6 lg:grid-cols-[1fr_500px]">
-          {/* =========================================================
-              LEFT CONTENT
-          ========================================================= */}
+          
+          {/* LEFT CONTENT */}
 
           <div className="reveal">
-            {/* FLOATING INFO PILLS */}
-
             <div className="mb-8 flex flex-wrap gap-3">
               <div className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/70 backdrop-blur-xl">
                 ✦ Live Workshops
@@ -258,13 +240,9 @@ function UpcomingEventSection() {
               </div>
             </div>
 
-            {/* EVENT TITLE */}
-
             <h3 className="max-w-2xl font-display text-4xl font-semibold leading-tight text-white sm:text-6xl">
               {upcomingEvent.title}
             </h3>
-
-            {/* DESCRIPTION */}
 
             <p className="mt-6 max-w-xl text-base leading-relaxed text-white/60 sm:text-lg">
               Experience a next-generation tech event focused on design,
@@ -310,26 +288,26 @@ function UpcomingEventSection() {
 
             <div className="mt-10 flex flex-wrap gap-4">
               <a
-                href={upcomingEvent.url}
+                href="https://agentathonweb.vercel.app/"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="inline-flex items-center rounded-full bg-white px-7 py-3 font-clean text-sm font-medium text-black transition hover:scale-[1.03]"
               >
                 Register Now ↗
               </a>
 
-              <button
-                type="button"
+              <a
+                href="https://agentathonweb.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="rounded-full border border-white/10 bg-white/5 px-7 py-3 text-sm text-white/70 backdrop-blur-xl transition hover:bg-white/10"
               >
-                Explore Details
-              </button>
+                Explore Details ↗
+              </a>
             </div>
           </div>
 
-          {/* =========================================================
-              RIGHT CARD
-          ========================================================= */}
+          {/* RIGHT CARD */}
 
           <div className="reveal relative">
             <div
@@ -340,9 +318,7 @@ function UpcomingEventSection() {
                 <HandsLayer3D />
               </Suspense>
 
-              {/* =========================================================
-                  EYE
-              ========================================================= */}
+              {/* EYE */}
 
               <div
                 ref={eyeRef}
@@ -360,15 +336,13 @@ function UpcomingEventSection() {
                 </div>
               </div>
 
-              {/* =========================================================
-                  EVENT BADGE
-              ========================================================= */}
+              {/* EVENT BADGE */}
 
               <button
                 type="button"
                 onClick={() =>
                   window.open(
-                    upcomingEvent.url,
+                    'https://agentathonweb.vercel.app/',
                     '_blank',
                     'noopener,noreferrer'
                   )
@@ -377,6 +351,7 @@ function UpcomingEventSection() {
                 aria-label="Open upcoming event"
               >
                 <div className="event-badge-ring relative h-24 w-24 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 shadow-[0_18px_70px_rgba(94,217,243,0.35)]">
+                  
                   <svg
                     className="absolute inset-0 h-full w-full"
                     viewBox="0 0 100 100"
